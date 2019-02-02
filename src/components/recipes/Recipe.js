@@ -17,12 +17,12 @@ const Recipe = props => {
           <h5>{recipe.strMeal}</h5>
           <p className="card-text">
             <strong>
-              <i className="fas fa-play" /> Category
+              <i className="fas fa-utensil-spoon" /> Category
             </strong>
             : {recipe.strCategory}
             <br />
             <strong>
-              <i className="fas fa-compact-disc" /> Area
+              <i className="fas fa-globe-asia" /> Cuisine
             </strong>
             : {recipe.strArea}
           </p>

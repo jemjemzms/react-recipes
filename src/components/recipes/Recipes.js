@@ -5,14 +5,14 @@ import Recipe from "./Recipe";
 
 class Recipes extends Component {
   render() {
-    console.log("asdad");
-
     return (
       <Consumer>
         {value => {
           const { recipe_list, heading } = value;
 
-          if (recipe_list === undefined || recipe_list.length === 0) {
+          if (recipe_list === null) {
+            return <div>There's no recipe found, please search again.</div>;
+          } else if (recipe_list === undefined || recipe_list.length === 0) {
             return <Spinner />;
           } else {
             return (

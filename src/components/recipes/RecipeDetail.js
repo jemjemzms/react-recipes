@@ -11,12 +11,12 @@ class RecipeDetail extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://www.food2fork.com/api/get?key=${
+        `https://www.themealdb.com/api/json/v1/${
           process.env.REACT_APP_MM_KEY
-        }&rId=${this.props.match.params.id}`
+        }/lookup.php?i=${this.props.match.params.id}`
       )
       .then(res => {
-        this.setState({ recipe: res.data.recipe });
+        this.setState({ recipe: res.data.meals[0] });
       })
       .catch(err => console.log(err));
   }
@@ -27,7 +27,47 @@ class RecipeDetail extends Component {
     if (recipe === undefined || Object.keys(recipe).length === 0) {
       return <Spinner />;
     } else {
-      const ingredients = recipe.ingredients;
+      let youtube = "";
+      let youtubeView = "";
+      if (recipe.strYoutube) {
+        youtube = recipe.strYoutube;
+        const youtubeArray = youtube.split("v=");
+        youtube = `https://www.youtube.com/embed/${youtubeArray[1]}`;
+        youtubeView = (
+          <iframe
+            src={youtube}
+            style={{ width: "100%", height: "500px" }}
+            title={recipe.strMeal}
+          />
+        );
+      } else {
+        youtubeView = (
+          <img
+            src={recipe.strMealThumb}
+            style={{ width: "50%" }}
+            className="mb-2"
+            alt={recipe.strMeal}
+          />
+        );
+      }
+
+      let tagView = "";
+      if (recipe.strTags !== null) {
+        tagView = (
+          <li className="list-group-item">
+            <strong>Tags</strong>: {recipe.strTags}
+          </li>
+        );
+      }
+
+      // var ingredients = [];
+      // for (var i = 0; i < 20; i++) {
+      //   if (recipe.strIngredient){
+      //     ingredients.push(ObjectRow());
+      //   }
+      // }
+
+      console.log(`${recipe.strIngredient + "1"}`);
 
       return (
         <React.Fragment>
@@ -35,34 +75,30 @@ class RecipeDetail extends Component {
             Go Back
           </Link>
           <div className="card">
-            <h5 className="card-header">
-              {recipe.title} by{" "}
-              <span className="text-secondary">{recipe.publisher}</span>
-            </h5>
+            <h5 className="card-header">{recipe.strMeal}</h5>
             <div className="card-body">
-              <img
-                src={recipe.image_url}
-                style={{ width: "50%" }}
-                className="mb-2"
-                alt={recipe.title}
-              />
-              <div className="card-text">
-                <ol>
-                  {ingredients.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ol>
-              </div>
+              {youtubeView}
+              <div className="card-text">{recipe.instructions}</div>
             </div>
           </div>
-
           <ul className="list-group mt-3">
             <li className="list-group-item">
-              <strong>Recipe ID</strong>: {recipe.recipe_id}
+              <strong>Cuisine</strong>: {recipe.strArea}
             </li>
             <li className="list-group-item">
-              <strong>Rank</strong>: {recipe.social_rank}
+              <strong>Category</strong>: {recipe.strCategory}
             </li>
+            <li className="list-group-item">
+              <strong>Source</strong>:{" "}
+              <a
+                href={recipe.strSource}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Click Here
+              </a>
+            </li>
+            {tagView}
           </ul>
         </React.Fragment>
       );
