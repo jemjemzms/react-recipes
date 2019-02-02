@@ -12,4 +12,4 @@ An app that is use to search recipes using Reacts built in context API along wit
 ## 💫 Links
 
 [The Meal DB](https://www.themealdb.com/api.php) <br />
-[Demo](https://react-recipe.netlify.com/)
+[Demo](https://react-recipe-finder.netlify.com/)
