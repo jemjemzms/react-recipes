@@ -52,7 +52,7 @@ class RecipeDetail extends Component {
       }
 
       let tagView = "";
-      if (recipe.strTags !== null) {
+      if (recipe.strTags) {
         tagView = (
           <li className="list-group-item">
             <strong>Tags</strong>: {recipe.strTags}
@@ -60,14 +60,86 @@ class RecipeDetail extends Component {
         );
       }
 
-      // var ingredients = [];
-      // for (var i = 0; i < 20; i++) {
-      //   if (recipe.strIngredient){
-      //     ingredients.push(ObjectRow());
-      //   }
-      // }
+      let ingredient1 = "";
+      if (recipe.strIngredient1) {
+        ingredient1 = (
+          <li className="list-group-item">
+            <strong>Ingredient 1</strong>: {recipe.strIngredient1}
+          </li>
+        );
+      }
 
-      console.log(`${recipe.strIngredient + "1"}`);
+      let ingredient2 = "";
+      if (recipe.strIngredient2) {
+        ingredient2 = (
+          <li className="list-group-item">
+            <strong>Ingredient 2</strong>: {recipe.strIngredient2}
+          </li>
+        );
+      }
+
+      let ingredient3 = "";
+      if (recipe.strIngredient3) {
+        ingredient3 = (
+          <li className="list-group-item">
+            <strong>Ingredient 3</strong>: {recipe.strIngredient3}
+          </li>
+        );
+      }
+
+      let ingredient4 = "";
+      if (recipe.strIngredient4) {
+        ingredient4 = (
+          <li className="list-group-item">
+            <strong>Ingredient 4</strong>: {recipe.strIngredient4}
+          </li>
+        );
+      }
+
+      let ingredient5 = "";
+      if (recipe.strIngredient5) {
+        ingredient5 = (
+          <li className="list-group-item">
+            <strong>Ingredient 5</strong>: {recipe.strIngredient5}
+          </li>
+        );
+      }
+
+      let ingredient6 = "";
+      if (recipe.strIngredient6) {
+        ingredient6 = (
+          <li className="list-group-item">
+            <strong>Ingredient 6</strong>: {recipe.strIngredient6}
+          </li>
+        );
+      }
+
+      let ingredient7 = "";
+      if (recipe.strIngredient7) {
+        ingredient7 = (
+          <li className="list-group-item">
+            <strong>Ingredient 7</strong>: {recipe.strIngredient7}
+          </li>
+        );
+      }
+
+      let ingredient8 = "";
+      if (recipe.strIngredient8) {
+        ingredient8 = (
+          <li className="list-group-item">
+            <strong>Ingredient 8</strong>: {recipe.strIngredient8}
+          </li>
+        );
+      }
+
+      let ingredient9 = "";
+      if (recipe.strIngredient9) {
+        ingredient9 = (
+          <li className="list-group-item">
+            <strong>Ingredient 9</strong>: {recipe.strIngredient9}
+          </li>
+        );
+      }
 
       return (
         <React.Fragment>
@@ -82,6 +154,16 @@ class RecipeDetail extends Component {
             </div>
           </div>
           <ul className="list-group mt-3">
+            {ingredient1}
+            {ingredient2}
+            {ingredient3}
+            {ingredient4}
+            {ingredient5}
+            {ingredient6}
+            {ingredient7}
+            {ingredient8}
+            {ingredient9}
+            {tagView}
             <li className="list-group-item">
               <strong>Cuisine</strong>: {recipe.strArea}
             </li>
@@ -98,7 +180,6 @@ class RecipeDetail extends Component {
                 Click Here
               </a>
             </li>
-            {tagView}
           </ul>
         </React.Fragment>
       );
