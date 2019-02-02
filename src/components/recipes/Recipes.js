@@ -5,6 +5,8 @@ import Recipe from "./Recipe";
 
 class Recipes extends Component {
   render() {
+    console.log("asdad");
+
     return (
       <Consumer>
         {value => {
@@ -17,9 +19,13 @@ class Recipes extends Component {
               <React.Fragment>
                 <h3 className="text-center mb-4">{heading}</h3>
                 <div className="row">
-                  {recipe_list.map(item => (
-                    <Recipe key={item.recipe_id} recipe={item} />
-                  ))}
+                  {recipe_list.map(item => {
+                    return item.strMealThumb !== null ? (
+                      <Recipe key={item.idMeal} recipe={item} />
+                    ) : (
+                      ""
+                    );
+                  })}
                 </div>
               </React.Fragment>
             );

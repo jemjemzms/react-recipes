@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/layout/Navbar";
 import Index from "./components/layout/Index";
+import RecipeDetail from "./components/recipes/RecipeDetail";
 
 import "./App.css";
 
@@ -18,6 +19,11 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Index} />
+                <Route
+                  exact
+                  path="/recipes/detail/:id"
+                  component={RecipeDetail}
+                />
               </Switch>
             </div>
           </React.Fragment>

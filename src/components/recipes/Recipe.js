@@ -9,25 +9,25 @@ const Recipe = props => {
       <div className="card mb-4 shadow-sm">
         <div className="card-body">
           <img
-            src={recipe.image_url}
+            src={recipe.strMealThumb}
             style={{ width: "100%" }}
             className="mb-2"
-            alt={recipe.title}
+            alt={recipe.strMeal}
           />
-          <h5>{recipe.title}</h5>
+          <h5>{recipe.strMeal}</h5>
           <p className="card-text">
             <strong>
-              <i className="fas fa-play" /> Rank
+              <i className="fas fa-play" /> Category
             </strong>
-            : {recipe.social_rank}
+            : {recipe.strCategory}
             <br />
             <strong>
-              <i className="fas fa-compact-disc" /> Publisher
+              <i className="fas fa-compact-disc" /> Area
             </strong>
-            : {recipe.publisher}
+            : {recipe.strArea}
           </p>
           <Link
-            to={`recipes/recipe/${recipe.recipe_id}`}
+            to={`recipes/detail/${recipe.idMeal}`}
             className="btn btn-dark btn-block"
           >
             <i className="fas fa-chevron-right" /> View Recipe

@@ -6,18 +6,19 @@ const Context = React.createContext();
 export class Provider extends Component {
   state = {
     recipe_list: [],
-    heading: "Top 10 Recipes"
+    heading: "Latest Recipes"
   };
 
   componentDidMount() {
     axios
       .get(
-        `https://www.food2fork.com/api/search?key=${
+        `https://www.themealdb.com/api/json/v1/${
           process.env.REACT_APP_MM_KEY
-        }&q=`
+        }/latest.php`
       )
       .then(res => {
-        this.setState({ recipe_list: res.data.recipes });
+        // console.log(res.data);
+        this.setState({ recipe_list: res.data.meals });
       })
       .catch(err => console.log(err));
   }
